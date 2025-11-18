@@ -13,9 +13,8 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to contact book application." });
 });
 
-// Routes - mount contact routes (PHẢI SAU MIDDLEWARE, TRƯỚC module.exports)
-const contactRoutes = require("./app/routes/contact.route");
+// Routes - mount contact routes 
+const contactRoutes = require("./app/config/routes/contact.route");
 app.use("/api/contacts", contactRoutes);
-
 // Export app (PHẢI Ở CUỐI)
 module.exports = app;
