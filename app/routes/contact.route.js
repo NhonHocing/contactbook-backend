@@ -2,6 +2,7 @@ const express = require('express');
 const ApiError = require('../routes/api-error');
 const ContactService = require('../services/contact.services'); // Import ContactService
 const MongoDB = require('../utils/mongodb.util'); // Import MongoDB
+const contactController = require('../controllers/contact.controller'); // Import controller
 const router = express.Router();
 
 const asyncHandler = (fn) => (req, res, next) => {
@@ -31,6 +32,10 @@ router.get('/', asyncHandler(async (req, res, next) => {
   
   return res.send(documents);
 }));
+
+// Route GET để lấy tất cả contact được đánh dấu yêu thích
+router.get('/favorite/all', contactController.findAllFavorite);
+router.get('/favorite', contactController.findAllFavorite);
 
 // Route GET để lấy contact theo id
 router.get('/:id', asyncHandler(async (req, res, next) => {
@@ -95,6 +100,9 @@ router.put('/:id', asyncHandler(async (req, res, next) => {
     return next(new ApiError(500, "An error occurred while updating the contact"));
   }
 }));
+
+// Route DELETE để xóa tất cả contact
+router.delete('/', contactController.deleteAll);
 
 // Route DELETE để xóa contact theo id
 router.delete('/:id', asyncHandler(async (req, res, next) => {

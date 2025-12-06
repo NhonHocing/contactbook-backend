@@ -1,10 +1,13 @@
 {
   "scripts": {
-  "start": "node server.js",
-  "dev": "nodemon server.js",
-  "lint": "eslint .",
-  "format": "prettier --write ."
-}
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "lint": "eslint .",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "mongodb": "^7.0.0"
   }
-
-
+}
